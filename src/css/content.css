@@ -1,0 +1,41 @@
+.header-content{
+    border: solid #48796e;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px #48796e;
+    background-color: #77b2a4;
+    color: white;
+}
+
+.section-content{
+    border: solid #48796e;
+    border-radius: 8px;
+    padding: 1rem;
+    min-height: 87vh;
+}
+
+.nav-pill-item{
+    color: black !important;
+}
+
+.nav-pill-item:hover{
+    background-color: #77b2a4;
+    transition-delay: 0.3ms;
+    color: white !important;
+}
+
+.content-columns{
+    background-color: #77b2a4;
+    border-radius: 8px;
+    color: white;
+}
+
+.header-card{
+    background-color: white;
+    color: black;
+    padding: 7px;
+    border-radius: 8px;
+}
+
+.content-card{
+    min-height: 60%;
+}

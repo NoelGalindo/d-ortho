@@ -1,0 +1,17 @@
+.bg-sidebar{
+    background-color: #48796e;
+}
+
+.isSelected{
+    color: white !important;
+}
+
+.isSelected:hover{
+    background-color: white !important;
+    color: #48796e !important;
+    transition-delay: 0.3ms;
+}
+
+.logo{
+    background-color: white;
+}
