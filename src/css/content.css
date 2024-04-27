@@ -1,13 +1,13 @@
 .header-content{
-    border: solid #48796e;
+    border: solid #47786e;
     border-radius: 10px;
-    box-shadow: 0 2px 5px #48796e;
-    background-color: #77b2a4;
+    box-shadow: 0 2px 5px #47786e;
+    background-color: #6fb3a4;    ;
     color: white;
 }
 
 .section-content{
-    border: solid #48796e;
+    border: solid #47786e;
     border-radius: 8px;
     padding: 1rem;
     min-height: 87vh;
@@ -18,13 +18,13 @@
 }
 
 .nav-pill-item:hover{
-    background-color: #77b2a4;
+    background-color: #6fb3a4;
     transition-delay: 0.3ms;
     color: white !important;
 }
 
 .content-columns{
-    background-color: #77b2a4;
+    background-color: #6fb3a4;
     border-radius: 8px;
     color: white;
 }

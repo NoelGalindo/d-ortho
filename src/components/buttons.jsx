@@ -1,5 +1,4 @@
 import '../css/buttons.css';
-import Modal from './modals';
 import { useState } from 'react';
 
 export function ButtonAdd(props){

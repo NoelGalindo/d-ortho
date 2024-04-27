@@ -1,5 +1,5 @@
 .bg-sidebar{
-    background-color: #48796e;
+    background-color: #47786e;
 }
 
 .isSelected{
@@ -8,7 +8,7 @@
 
 .isSelected:hover{
     background-color: white !important;
-    color: #48796e !important;
+    color: #47786e !important;
     transition-delay: 0.3ms;
 }
 

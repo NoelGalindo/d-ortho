@@ -13,7 +13,6 @@ export function Dashboard({children}){
                         </Link>
                         <ul className="nav nav-pills flex-column mb-sm-auto mb-0 w-100" id="menu">
                               <DashboardItem iconDashboard="bi bi-backpack4-fill" text="Almacen" page="/"/>
-                              <DashboardItem iconDashboard="bi bi-backpack4-fill" text="Ventas"/>
                         </ul>
                         <hr />
                         

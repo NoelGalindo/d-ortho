@@ -16,24 +16,24 @@ async function loginUser(credentials) {
       body: JSON.stringify(credentials)
     })
       .then(data => data.json())
-   }
+}
 
 export function LoginForm({setToken}){
     const [email, setEmial] = useState()
     const [password, setPassword] = useState()
     
     const handleSubmit = async e => {
-    e.preventDefault();
-    const credentials = {"username": email, "password":password}
-    try{
-        const token = await loginUser(credentials);
-        toastifySuccess("Bienvenido", 1000)
-        setToken(token);
-    }catch(err){
-        toastifyError("Error de credenciales", 1000)
-    }
+        e.preventDefault();
+        const credentials = {"username": email, "password":password}
+        try{
+            const token = await loginUser(credentials);
+            toastifySuccess("Bienvenido", 1000)
+            setToken(token);
+        }catch(err){
+            toastifyError("Error de credenciales", 1000)
+        }
     
-}
+    }
 
     return(
        <section className="main-container">

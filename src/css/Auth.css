@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #48796e;
+  background-color: #47786e;
   min-height: 100vh;
 }
 
@@ -10,8 +10,8 @@
   padding: 2rem;
   border-radius: 15px;
   border-style: solid;
-  box-shadow: 0 0 2px #48796e;
-  border-color: #48796e;
+  box-shadow: 0 0 2px #47786e;
+  border-color: #47786e;
   background-color: white;
 }
 
@@ -22,9 +22,9 @@
 }
 
 .btn-login{
-  background-color: #77b2a4;
+  background-color: #6fb3a4;
   padding: 5px;
-  border: 1px solid #77b2a4;
+  border: 1px solid #6fb3a4;
   border-radius: 5px;
   border-color: #77b2a4;
   box-shadow: none;
@@ -35,5 +35,5 @@
 .btn-login:hover{
   background-color: #c3f3e4;
   transition-delay: 0.3ms;
-  color: #48796e ;
+  color: #47786e ;
 }

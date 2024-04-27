@@ -1,12 +1,43 @@
 import {Dashboard} from '../DefaultLayout.jsx'
 import '../css/content.css'
 import {ButtonAdd, ButtonEdit, ButtonDelete} from '../components/buttons.jsx'
-import Modal from '../components/modals.jsx';
-import { useState } from 'react';
+import {ModalAddCategory, ModalEditCategory, ModalDeleteCategory} from '../components/modals.jsx';
+import { useState, useEffect } from 'react';
 
 
 export function Almacen(){
+    // Update the state of the select with the categories
+    const [selectedOption, setSelectedOption] = useState('default');
+    const [selectOptions, setSelectOptions] = useState([]);
+    const [selectedCategorie, setSelectedCategorie] = useState('default');
+
+    // States for showing modals
     const [isOpen, setIsOpen] = useState(false);
+    const [isOpenEdit, setIsOpenEdit] = useState(false);
+    const [isOpenDelete, setIsOpenDelete] = useState(false);
+
+
+
+    useEffect(() => {
+        let tokenData = sessionStorage.getItem("token")
+        let datos = JSON.parse(tokenData)
+        fetch('http://localhost:8080/almacen/listCategories',  {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + datos.token
+            },
+          })
+        .then((response) => response.json())
+        .then((data) => setSelectOptions(data))
+        .catch((error) => console.error('Error fetching options:', error));
+    }, []);
+
+    const handleOptionChange = (event) => {
+        setSelectedOption(event.target.value);
+        setSelectedCategorie(event.target.options[event.target.selectedIndex].text);
+    };
+
     return(
     <Dashboard>
         <header>
@@ -36,15 +67,20 @@ export function Almacen(){
                         <br />
                         <div className='content-card d-flex flex-column justify-content-center'>
                             <label className='roboto-regular' htmlFor="listCategories">Lista de categorias</label><br />
-                            <select className='form-control roboto-regular' name="" id="">
-                                <option>Opcion 1</option>
+                            <select className='form-control roboto-regular' value={selectedOption} onChange={handleOptionChange}>
+                                <option value="default">Select an option</option>
+                                {selectOptions.map((option) => (
+                                    <option key={option.categoria} value={option.categoria}>
+                                        {option.nombre_categoria}
+                                    </option>
+                                ))}
                             </select>
                         </div>
                         <br />
                         <div className='d-flex justify-content-center row'>
                             <button type='button' className="btn btn-success m-1 col-12 col-sm-12 col-md-4 col-lg-4 roboto-regular" onClick={() => setIsOpen(true)}>Agregar</button>
-                            <ButtonEdit text="Editar" />
-                            <ButtonDelete text="Eliminar" />
+                            <button type='button' className="btn btn-primary m-1 col-12 col-sm-12 col-md-3 col-lg-3 roboto-regular" onClick={() => setIsOpenEdit(true)}>Editar</button>
+                            <button type='button' className="btn btn-danger m-1 col-12 col-sm-12 col-md-4 col-lg-4 roboto-regular" onClick={() => setIsOpenDelete(true)}>Eliminar</button>
                         </div>
                     </div>
                     <div className='col-12 col-sm-12 col-md-12 col-lg-5 p-5 mb-3 content-columns'>
@@ -70,7 +106,9 @@ export function Almacen(){
                     </div>
                 </div>
             </div>
-            {isOpen && <Modal setIsOpen={setIsOpen} />}
+            {isOpen && <ModalAddCategory setIsOpen={setIsOpen} setSelectOptions={setSelectOptions} />}
+            {isOpenEdit && <ModalEditCategory setIsOpen={setIsOpenEdit} selectedOption={selectedOption} selectedCategorie={selectedCategorie} setSelectOptions={setSelectOptions}/>}
+            {isOpenDelete && <ModalDeleteCategory setIsOpen={setIsOpenDelete} selectedOption={selectedOption} selectedCategorie={selectedCategorie} setSelectOptions={setSelectOptions}/>}
         </section>
         
     </Dashboard>

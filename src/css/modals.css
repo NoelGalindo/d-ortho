@@ -6,59 +6,58 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    position: absolute;
-    
+    position: fixed;
+    backdrop-filter: blur(8px);
+  }
+
+  .bg-all{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
   }
   
-  .centered {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
   
   .modalAll {
-    width: 500px;
-    height: 200px;
     background: white;
     color: white;
     z-index: 10;
+    padding: 8px;
     border-radius: 16px;
     box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+    animation: popUp 0.5s ease forwards;
   }
   
   .modalHeader {
     height: 50px;
-    background: white;
     overflow: hidden;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
+    background-color: #6fb3a4;
+    color: white;
   }
   
   .heading {
     margin: 0;
     padding: 10px;
-    color: #2c3e50;
     font-weight: 500;
-    font-size: 18px;
-    text-align: center;
   }
   
   .modalContent {
     padding: 10px;
     font-size: 14px;
-    color: #2c3e50;
-    text-align: center;
+    color: black;
   }
   
   .modalActions {
-    position: absolute;
     bottom: 2px;
     margin-bottom: 10px;
     width: 100%;
   }
   
   .actionsContainer {
+    padding: 10px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -68,60 +67,48 @@
     cursor: pointer;
     font-weight: 500;
     padding: 4px 8px;
-    border-radius: 8px;
     border: none;
     font-size: 18px;
-    color: #2c3e50;
-    background: white;
     transition: all 0.25s ease;
-    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.06);
-    position: absolute;
-    right: 0;
-    top: 0;
-    align-self: flex-end;
-    margin-top: -7px;
+    margin-top: -7p;
     margin-right: -7px;
+    background-color: #6fb3a4;
+    color: white;
   }
   
   .closeBtn:hover {
     box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
-    transform: translate(-4px, 4px);
+    transform: translate(-4px);
   }
   
-  .deleteBtn {
-    margin-top: 10px;
-    cursor: pointer;
-    font-weight: 500;
-    padding: 11px 28px;
-    border-radius: 12px;
-    font-size: 0.8rem;
-    border: none;
-    color: #fff;
-    background: #ff3e4e;
-    transition: all 0.25s ease;
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-100%);
   }
-  
-  .deleteBtn:hover {
-    box-shadow: 0 10px 20px -10px rgba(255, 62, 78, 0.6);
-    transform: translateY(-5px);
-    background: #ff3e4e;
+  to {
+      transform: translateY(0);
   }
-  
-  .cancelBtn {
-    margin-top: 10px;
-    cursor: pointer;
-    font-weight: 500;
-    padding: 11px 28px;
-    border-radius: 12px;
-    font-size: 0.8rem;
-    border: none;
-    color: #2c3e50;
-    background: #fcfcfc;
-    transition: all 0.25s ease;
+}
+
+@keyframes popUp {
+  from {
+      transform: translate(0, 0) scale(0);
+      opacity: 0;
   }
-  
-  .cancelBtn:hover {
-    box-shadow: none;
-    transform: none;
-    background: whitesmoke;
+  to {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
   }
+}
+
+@keyframes reversePopUp {
+  from {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+  }
+  to {
+      transform: translate(0, 0) scale(0);
+      opacity: 0;
+  }
+}
